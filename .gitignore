@@ -1,0 +1,7 @@
+data/
+# !data/**/
+# !data/**/*.json
+.venv/
+__pycache__/
+uv.lock
+.env

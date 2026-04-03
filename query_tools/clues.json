@@ -1,0 +1,276 @@
+{
+    "names": [
+        "Havelock Vetinari",
+        "Sam Vimes",
+        "Ziarenko Javid",
+        "Sheeana Brugh",
+        "Alef Burzmali",
+        "Ammel Brodrig",
+        "Glawen Curr",
+        "Preem Palver",
+        "Lewis Pirenne",
+        "Manuel Belgrano",
+        "Bernardo Velazco",
+        "Claude Robichaux",
+        "Dorian Greene",
+        "Myrna Minkoff",
+        "Ilyusha Snegiryov",
+        "Ippolit Kirrillovich",
+        "Kuzma Samsonov",
+        "Giorgio Viola",
+        "Jose Avellanos",
+        "Martin Decoud",
+        "Frederick Tyler",
+        "Manuel Rey Diaz",
+        "Bill Hines",
+        "Luo Ji",
+        "Uriah Heep",
+        "Dora Spenlow",
+        "Tommy Traddles",
+        "Rosa Dartle",
+        "Martha Endell",
+        "Sophy Crewler"
+    ],
+    "facts": [
+        "hundreds of files were destroyed",
+        "there was a major data leak",
+        "salaries were raised",
+        "the company bought back its stock",
+        "annual bonuses were paid to all employees, but not contractors",
+        "some employees lost their bonuses",
+        "stocks were traded on an insider tip",
+        "there was a plan to dilute the stock"
+    ],
+    "reports": [
+        "the Environmental Impact Report",
+        "the Profit Projection Report",
+        "the Workforce Reorganization Report",
+        "the Confidential Report",
+        "the Tax Obligation Report",
+        "the Stock Dividend Report",
+        "the Accounting Report",
+        "the Debt Maintenance Report"
+    ],
+    "topics": [
+        "the confidential communication",
+        "the spillover event",
+        "the uncontrolled chain reactions",
+        "the disfavorable documentation",
+        "the boss' temper",
+        "the executive drama",
+        "the mass layoffs",
+        "the new allegations"
+    ],
+    "templates": {
+        "simple_retrieval": [
+            {
+                "setup": [
+                    "{x} met with {y} on {date}."
+                ],
+                "questions": [
+                    {
+                        "ques": "When did {y} meet with {x}?",
+                        "ans": "{y} met with {x} on {date}"
+                    },
+                    {
+                        "ques": "When did {x} meet with {y}?",
+                        "ans": "{x} met with {y} on {date}"
+                    }
+                ]
+            },
+            {
+                "setup": [
+                    "{x} approved of {report} on {date}."
+                ],
+                "questions": [
+                    {
+                        "ques": "Did {x} approve of {report}?",
+                        "ans": "{x} did approve of the report"
+                    },
+                    {
+                        "ques": "When did {x} approve of {report}?",
+                        "ans": "{x} approved the report on {date}"
+                    }
+                ]
+            },
+            {
+                "setup": [
+                    "{x} notified {y} that {fact} on {date}."
+                ],
+                "questions": [
+                    {
+                        "ques": "Was {y} notified that {fact}?",
+                        "ans": "{y} was notified that {fact}"
+                    },
+                    {
+                        "ques": "When was {y} notified that {fact}?",
+                        "ans": "{y} was notitfied of {fact} on {date}"
+                    },
+                    {
+                        "ques": "Who notified {y} that {fact}?",
+                        "ans": "{x} notified {y} that {fact}"
+                    }
+                ]
+            },
+            {
+                "setup": [
+                    "{x} was made aware of {fact} on {date}."
+                ],
+                "questions": [
+                    {
+                        "ques": "Does {x} know {fact}?",
+                        "ans": "yes, {x} knows {fact}"
+                    },
+                    {
+                        "ques": "When did {x} know {fact}?",
+                        "ans": "{x} knew {fact} on {date}"
+                    }
+                ]
+            }
+        ],
+        "formal_logic": [
+            {
+                "setup": [
+                    "If {x} has {report}, then they must have given it to {y}.",
+                    "{x} has the {report}."
+                ],
+                "questions": [
+                    {
+                        "ques": "Does {y} have the {report}?",
+                        "ans": "yes, given by {x}"
+                    }
+                ]
+            },
+            {
+                "setup": [
+                    "If {x} had the email about {topic}, then they must have given it to {y}.",
+                    "{y} does not have the email about {topic}."
+                ],
+                "questions": [
+                    {
+                        "ques": "Does {x} have the email on {topic}?",
+                        "ans": "no"
+                    }
+                ]
+            },
+            {
+                "setup": [
+                    "{x} and {y} do not both know of {topic}.",
+                    "{y} knows of {topic}."
+                ],
+                "questions": [
+                    {
+                        "ques": "Does {x} know of {topic}?",
+                        "ans": "no"
+                    }
+                ]
+            },
+            {
+                "setup": [
+                    "Either {x} or {y} know of {topic}. {x} does not know of {topic}."
+                ],
+                "questions": [
+                    {
+                        "ques": "Does {y} know of {topic}?",
+                        "ans": "yes"
+                    }
+                ]
+            },
+            {
+                "setup": [
+                    "If {x} has the email about {topic}, they would have shared it with {y}.",
+                    "If {y} has email about {topic}, they would have shared it with {z}."
+                ],
+                "questions": [
+                    {
+                        "ques": "If {x} has the email about {topic}, would {z} have email about {topic}?",
+                        "ans": "yes"
+                    }
+                ]
+            }
+        ],
+        "informal_logic": [
+            {
+                "setup": [
+                    "{x} gave {y} the {report} regarding {topic}.",
+                    "{z} was notified of everything {y} has on {topic}."
+                ],
+                "questions": [
+                    {
+                        "ques": "Does {z} know of {x}'s report?",
+                        "ans": "yes"
+                    }
+                ]
+            },
+            {
+                "setup": [
+                    "There is substantial evidence proving {topic}.",
+                    "{x} considers all available evidence when making assessments."
+                ],
+                "questions": [
+                    {
+                        "ques": "Does {x} believe {topic}?",
+                        "ans": "Likely"
+                    }
+                ]
+            },
+            {
+                "setup": [
+                    "{x} believes the {fact} for a reason unrelated to the evidence."
+                ],
+                "questions": [
+                    {
+                        "ques": "The evidence later comes to support the {fact}. Is {x}'s belief justified?",
+                        "ans": "no"
+                    }
+                ]
+            },
+            {
+                "setup": [
+                    "{x} gave {y} the {report}, which omits falsehoods but also omits critical truths."
+                ],
+                "questions": [
+                    {
+                        "ques": "Is {y} misinformed?",
+                        "ans": "likely"
+                    }
+                ]
+            },
+            {
+                "setup": [
+                    "{x} truthfully answers every question {y} asks about {topic}.",
+                    "{y} never asks {x} about {topic}."
+                ],
+                "questions": [
+                    {
+                        "ques": "Does {y} know of {topic} from {x}?",
+                        "ans": "no"
+                    }
+                ]
+            },
+            {
+                "setup": [
+                    "{x} thinks {y} is unreliable.",
+                    "{y} told {x} {fact}, and this is the the only thing they have heard about it."
+                ],
+                "questions": [
+                    {
+                        "ques": "Does {x} think {fact} is true?",
+                        "ans": "likely not"
+                    }
+                ]
+            },
+            {
+                "setup": [
+                    "All sources informing {x} about {topic} state {fact}."
+                ],
+                "questions": [
+                    {
+                        "ques": "Does {x} believe {fact}?",
+                        "ans": "likely"
+                    }
+                ]
+            }
+        ]
+    }
+}
