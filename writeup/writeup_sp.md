@@ -352,8 +352,12 @@ Note that these values are calculated on the raw data, not percentized scores, w
 Figure 1: Lexis Performance Means by Corp
 ![Figure 1: Lexis Performance Means by Corp](../data_visualizations/vendor_means/Lexis_mean_by_corp.png){ width=600px }
 
+Caption: A line graph showing the performance of the Lexis Protégé platform on retrieval performance. Each line represents a different corpus. A separate line showing a fitted exponential decay function is overlaid.
+
 Figure 2: Westlaw Means by Corp
 ![Figure 2: Westlaw Means by Corp](../data_visualizations/vendor_means/Westlaw_mean_by_corp.png){ width=600px }
+
+Caption: A line graph showing the performance of the Westlaw CoCounsel platform on retrieval performance. Each line represents a different corpus. A separate line showing a fitted exponential decay function is overlaid.
 
 As a goodness-of-fit measure, the $R^2$ of Lexis (0.506) and Westlaw (0.442) shows that the exponential decay function meaningfully describes a trend in the data, explaining ~51% and ~44% of the variance in the data respectively. While the exponential decay function is descriptive of the collected data, there is also variability in the data. This $R^2$ is influenced by a number of factors. Because file set sizes scale approximately logarithmically, gaps between file set sizes (x-values) are likewise spaced logarithmically. These increasing gaps between recorded x-values can make function fitting a challenge. Despite this challenge, exponential decay is still clearly observable and describable within the x-value range. 
 
@@ -367,6 +371,7 @@ Note that due to its errors and refusals, the curve describing Lexis' performanc
 
 Figure 3: Harvey Performance Means by Corp
 ![Figure 3: Harvey Performance Means by Corp](../data_visualizations/vendor_means/Harvey_mean_by_corp.png){ width=600px }
+Caption: A line graph showing the performance of the Harvey platform on retrieval performance. Each line represents a different corpus. A separate line showing a fitted exponential decay function is overlaid, although its poor fit is noted.
 
 Unlike Lexis and Westlaw which fit to a exponential decay function with statistically representative R-Values, data exploration found that no function properly fit the data from Harvey. The line shown in the graph shows the best-fitting exponential decay curve, but it fits the data very poorly ($R^2 = 0.051$), and looks very linear. This line is visually included to show what may be an averaged overall trend, not to indicate fit. There is no real relationship between the fit set size and performance that fit a regression model. 
 
