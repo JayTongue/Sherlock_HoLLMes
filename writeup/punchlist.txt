@@ -8,5 +8,6 @@ Independantly submit figures
     * Include that they were made by matplotlib
     * name Fig1.png, etc
     * CONVERT TO BLACK and WHITE without half-tones?
+   * size-  174 mm (for single-column text areas) wide and not higher than 234 mm
 
-Got to Artwork and Illustrations Guidelines
+Got to ethical Standards
