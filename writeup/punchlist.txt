@@ -1,0 +1,12 @@
+https://link.springer.com/journal/10506/submission-guidelines#Instructions%20for%20Authors_Title%20Page
+
+Format citations
+    * sort by last name
+    * citation format
+
+Independantly submit figures
+    * Include that they were made by matplotlib
+    * name Fig1.png, etc
+    * CONVERT TO BLACK and WHITE without half-tones?
+
+Got to Artwork and Illustrations Guidelines

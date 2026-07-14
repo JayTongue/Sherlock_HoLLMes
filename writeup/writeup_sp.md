@@ -18,6 +18,10 @@ Legal Research, Artificial Intelligence, Emperical Data, Database Retrieval
 
 The author has no financial or non-financial interest in the products evaluated, or the outcome of the evaluation.
 
+# Acknowledgments
+
+This research did not receive any funding.
+
 # Background and Literature review
 
 Electronic document management platforms have long been part of law practice and are an area that generative AI has and continuyes to disrupt. A critical element of this disruption is the ability to use legal AI tools not just to analyze documents, but to identify relevant documents out of many. This creates a new market for legal AI tools such as Harvey and Legora, which are not part of large pre-existing legal databases of authorities. Traditional legal tech platforms have also expanded to offer legal AI tools with this functionality as well.
@@ -60,9 +64,7 @@ Lexis is also a legal publisher and research database. They are owned by RELX, a
 [^3]: LexisNexis, _LexisNexis Introduces Protégé Personalized AI Assistant with Agentic AI, Making it Easier to Power Complex Legal Task Completion_, [LexisNexis]{.smallcaps} (January 27, 2025) https://www.lexisnexis.com/community/pressroom/b/news/posts/lexisnexis-introduces-protege-personalized-ai-assistant-with-agentic-ai-making-it-easier-to-power-complex-legal-task-completion [https://perma.cc/77K3-QDPH] (last visted Feb. 17, 2026).
 
 
-Westlaw and Lexis are sometimes referred to as a duopoly because of their dominant market positions for offering databases of legal and law-adjacent sources.[^17] While they do not face as much competition from other companies when it comes to legal databases, the area of legal AI is broadly contested, with many emerging players in the field. One such company is Harvey.
-
-[^17]: See e.g. Tom Blakely, _Gatekeepers of Law: Inside the Westlaw and LexisNexis Duopoly_, [BIG by Matt Stoller]{.smallcaps} (Dec 31, 2025) https://www.thebignewsletter.com/p/gatekeepers-of-law-inside-the-westlaw [https://perma.cc/3PDN-PADX] (last visited Feb. 17, 2026).
+Westlaw and Lexis are sometimes referred to as a duopoly because of their dominant market positions for offering databases of legal and law-adjacent sources. While they do not face as much competition from other companies when it comes to legal databases, the area of legal AI is broadly contested, with many emerging players in the field. One such company is Harvey.
 
 Harvey was founded in 2022 as a legal tech startup. In December of 2025, a funding round valued the company at 8 billion dollars.[^4] Harvey offers a variety of legal AI products such as the ability to create custom databases, make user-defined workflows, and iteratively produce and generate drafts of legal documents. The version of Harvey evaluated in this study did not have a version number.
 
@@ -75,28 +77,23 @@ This study confines its scope to the ability to upload a custom database and que
 
 A file set refers to the files used for a single upload and a single set of questions. Every file set is comprised of content from one of five corpora types with a specified number of files in the set. For instance, an Enron file set of size 25 would contain 25 files randomly selected from the Enron dataset.
 
-#### Corpus Types
+*Corpus Types*
+
 This study used five different types of corpora, meant to span a range of possible files in a legal setting. Files from the Contracts and Enron datasets were high in semantic content, whereas the synthetic corpora (Markov, Random, and Zeros) were low in semantic content. This paper uses "semantic content" to refer to content which conveys cognizable information. For instance, a clause of a contract conveys information about the agreement between the parties, whereas a string of random characters conveys no information. Besides the Contracts and Enron corpora which are semantically meaningful, the Markov copora mimics the text of legal opinions while the Random corpora mimics data which may be encrypted or corrupted, and the Zeros corpora mimics data which may be blank, overwritten, or redacted. 
 
 I included the random and zero data sets in this study to act as baselines to compare legal AI performance. Their complete lack of any human-readable language except for the clues isolates the element of pure dilution by allowing assessment of model performance without any confounding semantic content from the underlying corpus. It is against these that the performance of more realistic datasets such as those made from the contracts or enron corpora are contextually evaluated.
 
 I included the Markov corpus because of the interesting properties of Markov text. Specifically, although Markov text is statistically valid by definition, it is semantically meaningless. Since one of the features of large language models is that they process and understand text, the Markov corpus poses an interesting comparison to truly meaningful corpora from the real world.
 
-##### Commercial Contracts
-
 File sets of the "Contracts" filetype were filled with files randomly selected from the Material Contracts Corpus compiled in 2025 by Stanford Law School. This dataset is mostly comprised of contracts publicly available in the SEC EDGAR database. It contains the text of 1,038,766 contracts as well as metadata, totalling 156.2 GB. I downloaded this dataset from the Material Contracts Corpus website[^5], indexed it, and randomly sampled it for the text of file sets of this corpus type.
 
 [^5]: Peter Adelson and Julian Nyarko, _Material Contracts Corpus_, [Stanford Law School]{.smallcaps} https://mcc.law.stanford.edu/ [https://perma.cc/XC7Z-AJ7G] (last visited Feb. 17, 2026).
-
-##### Enron Discovery
 
 File sets of the "Enron" filetype were filled with files randomly selected from the Enron Email Dataset V2. Although this dataset has received a lot of analysis and scrutiny, it is quite difficult to find the dataset in a complete, un-filtered form. The fullest dataset available to the author was from the Internet Archive[^6]. These files were downloaded, extracted, and indexed. Fully extracted, this dataset takes 258.9 GB.
 
 [^6]: Enron Corporation, _Files for edrm.enron.email.data.set.v2.xml_, [Internet Archive]{.smallcaps} https://archive.org/download/edrm.enron.email.data.set.v2.xml [https://perma.cc/HYM9-72YQ] (last visited Feb. 17, 2026).
 
 A portion of this data is machine-generated text, such as email headings, signatures, and other computationally added information besides the message of the actual emails. Files for an Enron type file set contain the text of files randomly selected from this dataset.
-
-##### Markov Text
 
 File sets of the "Markov" filetype contained text generated from Markov Chains trained on the United States Reports. Markov Chains are mathematical descriptions of the pattern of text in a training corpora. Simplistically, they record the statistical likelihood of any current textual state leading to a given future textual state.[^7]
 
@@ -116,8 +113,6 @@ I then tokenized the text with a regular expression that split the text into a l
 
 Files of the Markov corporus used these chains to generate text until the text met the target file size.
 
-##### Random Characters
-
 File sets of the "Random" filetype contained the text of characters from generated from the /dev/urandom and /dev/random files in a linux filesystem. These two files allow users to access the computer's random number generator, returning a random stream of bytes based on the computer's entropy pool.[^10]
 
 [^10]: Linux Foundation, _urandom(4) - Linux man page_, [Linux Manual]{.smallcaps} https://linux.die.net/man/4/urandom [https://perma.cc/5CS5-V7KB] (last visited Feb. 17, 2026).
@@ -128,11 +123,9 @@ To curtail these issues, I regularized the data as hexadecimal strings. Although
 
 I filled files in Random file sets with these regularized random bytes until the text met the target file size.
 
-##### Zeros
-
 Files in the Zeros file sets contained literally repeated numerical zeros ("0"). Similarly to streamed random bytes in the Random corpus, a function streamed zeros into files until they contained the target file size.
 
-#### Distribution Analysis
+*Distribution Analysis*
 
 In order to mimic a realistic file size distribution for the synthetic corpora types (Markov, Random, and Zeros), I analyzed the file size distribution of the two publicly available datasets (Contracts and Enron) so that the generated files could follow roughly the same distribution. Since I was regularizing sizes of individual files along a set distribution, I decided to use number of files in a set as a proxy metric for overall size of information. Since both the Contracts and Enron datasets could be fit to a lognormal distribution, I followed an average of their distributions when creating synthetic corpora. A less limited study could explore the effect of different types of distributions. 
 
@@ -211,7 +204,8 @@ I chose three types of problems: simple retrieval, formal logic, and informal lo
 
 The full templates, as well as the populated names are available at the Github Repository.
 
-#### Simple Retrieval
+*Simple Retrieval*
+
 Simple Retrieval problems required the legal AI to find the literal, single-clue answer to a question. For instance, a template was: 
 
     "{x} met with {y} on {date}."
@@ -221,7 +215,7 @@ With a question an answer such as:
     question: "When did {y} meet with {x}?"
     answer: "{y} met with {x} on {date}"
 
-#### Formal Logic
+*Formal Logic*
 
 Formal Logic problems required the legal tech product to make a strictly formal logical deduction. These relied on the rules of inference for statement logic, specifically Modus Ponens, Modus Tollens, Conjunctive Syllogism, Disjunctive Syllogism, and Hypothetical Syllogism. 
 
@@ -235,7 +229,7 @@ With a question and answer such as:
     question: "Does {x} know of {topic}?"
     answer: "no"
 
-#### Informal Logic
+*Informal Logic*
 
 Informal Logic problems required the legal AI to make an informal logical deduction. These often dealt with probable or constructive knowledge. For instance, an Informal Logic template was:
 
@@ -261,19 +255,19 @@ Clue sets were consistent for each trial of a given file set size and a given co
 
 I followed a platform-specific procedure to upload files to each platform. Each of them have an upload/processing status indicator, and for each platform, I waited until all visual indicators of upload/processing showed completion.
 
-#### Lexis Protégé
+*Lexis Protégé*
 
 I uploaded the file sets via the web UI by clicking "Documents", then "Create Vault", and uploaded with drag-and-drop. Once the upload was complete, the questions were pasted into the chat box. The questions were accompanied by "Answer all questions but DO NOT do a document by document analysis for ANY part of the response. DO NOT make a timeline." This added statement was largely successful in stopping Lexis from making a timeline.[^21] Lexis' legal AI also sometimes failed to answer all questions in as given query. When this occured, I re-asked the questions that were unanswered.q
 
 [^21]: It is unclear to me what triggers Lexis Protégé to make a timeline. Sometimes when question sets included questions about dates (e.g. `When did {x} learn about {report}?`) Protégé would try to make a timeline, but inconsistently. The custom instructions were required to curtain this unexpected behavior as much as possible.
 
-#### Westlaw CoCounsel
+*Westlaw CoCounsel*
 
 I uploaded files via the web UI by clicking "Databases" in the bottom left-hand side bar then "Create new Database" and uploaded with drag-and-drop. Once the upload was complete, I opened a new chat session and selected the files in the database with either the "Search a database (skill)" or "Files from a database" option. 
 
 In addition to the questions, I added the following instructions to the query: "Answer all questions but DO NOT do a document by document analysis for ANY part of the response. DO NOT make a timeline.". Despite this, CoCounsel often attempted to give a synopsis of each document and its relevance to the query. Since the clues were so sparse, this led to many generated responses which were mostly stating that a certain file has no relevance to a question. 
 
-#### Harvey
+*Harvey*
 
 I uploaded the files via the web UI by clicking the "+" next to "Vault" in the left-hand sidebar, and uploading with drag-and-drop. With that vault open, I then pasted the questions into the chat box and selected all files in that vault when prompted. No additional instructions were added for Harvey. If Harvey asked whether it should make a table, I always selected no. 
 
@@ -355,9 +349,11 @@ Note that these values are calculated on the raw data, not percentized scores, w
 
 ### Lexis and Westlaw
 
-![Lexis means by corp](../data_visualizations/vendor_means/Lexis_mean_by_corp.png){ width=600px }
+Figure 1: Lexis Performance Means by Corp
+![Figure 1: Lexis Performance Means by Corp](../data_visualizations/vendor_means/Lexis_mean_by_corp.png){ width=600px }
 
-![Westlaw means by corp](../data_visualizations/vendor_means/Westlaw_mean_by_corp.png){ width=600px }
+Figure 2: Westlaw Means by Corp
+![Figure 2: Westlaw Means by Corp](../data_visualizations/vendor_means/Westlaw_mean_by_corp.png){ width=600px }
 
 As a goodness-of-fit measure, the $R^2$ of Lexis (0.506) and Westlaw (0.442) shows that the exponential decay function meaningfully describes a trend in the data, explaining ~51% and ~44% of the variance in the data respectively. While the exponential decay function is descriptive of the collected data, there is also variability in the data. This $R^2$ is influenced by a number of factors. Because file set sizes scale approximately logarithmically, gaps between file set sizes (x-values) are likewise spaced logarithmically. These increasing gaps between recorded x-values can make function fitting a challenge. Despite this challenge, exponential decay is still clearly observable and describable within the x-value range. 
 
@@ -369,7 +365,8 @@ Note that due to its errors and refusals, the curve describing Lexis' performanc
 
 ### Harvey
 
-![Harvey means by corp](../data_visualizations/vendor_means/Harvey_mean_by_corp.png){ width=600px }
+Figure 3: Harvey Performance Means by Corp
+![Figure 3: Harvey Performance Means by Corp](../data_visualizations/vendor_means/Harvey_mean_by_corp.png){ width=600px }
 
 Unlike Lexis and Westlaw which fit to a exponential decay function with statistically representative R-Values, data exploration found that no function properly fit the data from Harvey. The line shown in the graph shows the best-fitting exponential decay curve, but it fits the data very poorly ($R^2 = 0.051$), and looks very linear. This line is visually included to show what may be an averaged overall trend, not to indicate fit. There is no real relationship between the fit set size and performance that fit a regression model. 
 
@@ -416,7 +413,8 @@ $H_{alt}$ = It is not the case that $group1 = group2$.
 
 The "Reject" column describes whether on the basis of the Tukey-Kramer methodology, the Null hypothesis is rejected and the alternative hypothesis is adopted. Here, the alternative hypothesis is adopted for all pairs except Enron with Markov, and Random with Zeros. This means that according to Tukey-Kramer, the variation within each group in a pair does not exceed the variation between the groups in the pair. For all other groups, the distinction is statistically significant. 
 
-![Corpora performance](../data_visualizations/corpora_compared/corpus_comparison.png){ width=600px }
+Figure 4: Performance by Corpora
+![Figure 4: Performance by Corpora](../data_visualizations/corpora_compared/corpus_comparison.png){ width=600px }
 
 After determining that there is statistical difference overall as well as most pairs of groups, I compare these differences. The best recorded performances came from Zeros and Random. Although note that this data may be skewed because data is missing from Lexis for these corpora. After Zeros and Random, the next corpora, in order of performance, is Enron, then Markov, followed by Contracts.
 
@@ -496,58 +494,3 @@ This study leaves to further research the differences in kinds of questions such
 
 In the context of the ever-changing legal tech market, some AI tools and their providers claim that their product will bring powerful transformations to the practice of law. This study scrutinizes a subset of those claims, specifically relating to the ability to upload a custom database and query it with a legal AI tool. 
 
-\newpage
-
-# Appendix 1: Mean performance by Corpus
-
-This is a breakdown of mean performance of each individual legal AI product, with a graph for each corpus type.
-
-![Contracts performance](../data_visualizations/corpora_compared/contracts.png){ width=600px }
-
-![Enron performance](../data_visualizations/corpora_compared/enron.png){ width=600px }
-
-![Markov performance](../data_visualizations/corpora_compared/markov.png){ width=600px }
-
-![Random performance](../data_visualizations/corpora_compared/random.png){ width=600px }
-
-![Zeros performance](../data_visualizations/corpora_compared/zeros.png){ width=600px }
-
-\newpage
-
-# Appendix 2: Findings by Quartile 
-
-This is a breakdown of the mean, 25th and 75th percentile of the distribution of responses. Every vendor with every corpus is given its own graph.
-
-## Harvey
-
-![Harvey Contracts](../data_visualizations/quartiles/Harvey_contracts.png){ width=600px }
-
-![Harvey Enron](../data_visualizations/quartiles/Harvey_enron.png){ width=600px }
-
-![Harvey Markov](../data_visualizations/quartiles/Harvey_markov.png){ width=600px }
-
-![Harvey Random](../data_visualizations/quartiles/Harvey_random.png){ width=600px }
-
-![Harvey Zeros](../data_visualizations/quartiles/Harvey_zeros.png){ width=600px }
-
-\newpage
-
-## Westlaw
-
-![Westlaw Contracts](../data_visualizations/quartiles/Westlaw_contracts.png){ width=600px }
-
-![Westlaw Enron](../data_visualizations/quartiles/Westlaw_enron.png){ width=600px }
-
-![Westlaw Markov](../data_visualizations/quartiles/Westlaw_markov.png){ width=600px }
-
-![Westlaw Zeros](../data_visualizations/quartiles/Westlaw_zeros.png){ width=600px }
-
-\newpage
-
-## Lexis
-
-![Lexis Contracts](../data_visualizations/quartiles/Lexis_contracts.png){ width=600px }
-
-![Lexis Enron](../data_visualizations/quartiles/Lexis_enron.png){ width=600px }
-
-![Lexis Markov](../data_visualizations/quartiles/Lexis_markov.png){ width=600px }
