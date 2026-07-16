@@ -332,6 +332,8 @@ The Exponential Decay function is defined as:
 
 $$y = ae^{-bx} + c$$ 
 
+This is a mathematical model that is often used to describe quantities that decrease over time, such as a shrinking population or chemical decomposition. In this case, I found that exponential decay best fit my gathered data, describing how some legal AI products showed a decrease in performance as the file set size increased.
+
 Because I have multiple data points across different trials for any given file set size, I fit the Exponential Decay function to weighted mean responses at any given x value in order to show the underlying trend. This function fit is simply a descriptive model, not an inferential claim, and therefore does not use hypothesis testing.
 
 In order to fit models to this data, I found a weighted averaged of every file set size across all corpora. This was the $y$ value, and the file set size was the $x$. I then fit these points with the `curve_fit` function in the `scipy.optimize` library.[^15]
@@ -381,17 +383,19 @@ In lieu of an appropriately representative model, this study instead can only de
 
 There is correlation between the corpora and the Legal AI performance. 
 
-I performed Analysis of Variance (ANOVA) on all data points for each corpora to determine whether performance of different corpora are statistically distinct, i.e. whether the variance between groups was greater than variation within groups. The Null Hypothesis was that performance for every corpus was the same:
+I performed Analysis of Variance (ANOVA) on all data points for each corpora to determine whether performance of different corpora are statistically distinct. ANOVA asks whether, for a given set of data containing labels and values, the variation within each label is greater than the variation between the labels. Stated differently, ANOVA determines whether the variance between groups was greater than variation within groups. The null hypothesis for ANOVA is that was that performance for every corpus was the same:
 
 $H0: contracts = enron = markov = random = zeros$
 
-with the alternative hypothesis stated as:
+and the alternative hypothesis stated as:
 
 $Halt$: it is not the case that $contracts = enron = markov = random = zeros$
 
-ANOVA yielded a P-value of 3.2642672702541746e-46, far smaller than any conventional significance level. This means there is extremely strong evidence that at one or several groups differ from other groups.
+The task of ANOVA is to calculate a P-value, which is a mathematical representation of the comparison the variation within groups vs between groups. If the P-value is lower than a selected significance level, then we reject the null hypothesis and accept its negation, the alternative hypothesis.
 
-I followed this with a variation of Tukey's Honestly Significantly Different test called Tukey-Kramer. This variation is used when different data labels had different numbers of data points. This test determines which pairs of groups were statistically distinct from each other.
+In this case, ANOVA yielded a P-value of 3.2642672702541746e-46, far smaller than any conventional significance level. This means there is extremely strong evidence that at one or several groups differ from other groups.
+
+I followed this with a variation of Tukey's Honestly Significantly Different test called Tukey-Kramer. Tukey tests can be used when the null hypothesis in ANOVA is rejected. It performs a similar comparison, but between each individual pair of labels as opposed to considering labels as a whole. The Tukey-Kramer variation is used when different data labels had different numbers of data points. This test determines which pairs of groups were statistically distinct from each other.
 
 Tukey-Kramer yielded the following analysis for each pair of corpora compared against a 5% significance value:
 
@@ -408,7 +412,7 @@ Tukey-Kramer yielded the following analysis for each pair of corpora compared ag
 | markov    | zeros   |   1.3195 | 0.44462 |   True  |
 | random    | zeros   | 0.038250 | 0.52015 |  False  |
 
-For each pair of groups, the Null Hypothesis is:
+For each pair of groups, the null hypothesis in Tukey-Kramer is:
 
 $H_{0}$ = $group 1 = group 2$, 
 
@@ -416,7 +420,7 @@ and the alternative hypothesis is
 
 $H_{alt}$ = It is not the case that $group1 = group2$. 
 
-The "Reject" column describes whether on the basis of the Tukey-Kramer methodology, the Null hypothesis is rejected and the alternative hypothesis is adopted. Here, the alternative hypothesis is adopted for all pairs except Enron with Markov, and Random with Zeros. This means that according to Tukey-Kramer, the variation within each group in a pair does not exceed the variation between the groups in the pair. For all other groups, the distinction is statistically significant. 
+The "Reject?" column describes whether on the basis of the Tukey-Kramer methodology, the null hypothesis is rejected and the alternative hypothesis is adopted. Here, the alternative hypothesis is adopted for all pairs except Enron with Markov, and Random with Zeros. This means that according to Tukey-Kramer, the variation within each group in a pair does not exceed the variation between the groups in these pairs. For all other groups, the distinction is statistically significant. 
 
 Figure 4: Performance by Corpora
 ![Figure 4: Performance by Corpora](../data_visualizations/corpora_compared/corpus_comparison.png){ width=600px }
