@@ -1,10 +1,10 @@
 ---
 title: "Retrieval Capabilities of Legal AI Tools"
-author: "Justin Tung[^18]"
+author: "[AUTHOR INFO][^18]"
 date: "2026"
 ---
 
-[^18]: Transactional Practice Innovation Lead at Jackson Walker LLP. The author holds a J.D. from the University of Texas School of law, MSLIS from the University of Illinois, and a BA from Boston College. 
+[^18]: [AUTHOR INFO]
 
 # Abstract
 
@@ -18,7 +18,7 @@ Legal Research, Artificial Intelligence, Emperical Data, Database Retrieval
 
 The author has no financial or non-financial interest in the products evaluated, or the outcome of the evaluation.
 
-# Acknowledgments and Funding
+# Acknowledgments
 
 This research did not receive any funding.
 
@@ -36,7 +36,7 @@ It is into this research gap that this research steps.
 
 # Methodology
 
-All code is available at this Git Repository: https://github.com/JayTongue/Sherlock_HoLLMes
+All code is available at this Git Repository: [AUTHOR INFO]
 
 Generative Artificial Intelligence was not used in any step of the experimental design, trials, evaluations, or writing of this experimentation or report. 
 
@@ -447,7 +447,7 @@ The following observations are derived from extensive interaction with the studi
 
 The speed of these legal AI tools varies widely at each stage. For reasons mostly unknown, Lexis was, by far, the slowest to upload files. The only information I received that may contribute to explaining why came from Lexis themselves. During my experimentation, a Lexis employee contacted me and informed me that my use load was negatively impacting "the product's overall performance"[^16]. They explained that this was leading to slower upload and processing times. Although they did not ask me to stop or throttle my access, they did ask about the nature of my use to better allocate resources for it. First, this may be indicative of overall scale issues with the this legal AI in its current deployment. Second, this may explain the performance of Lexis' legal AI tool in this study. Without further information, I cannot conclusively address either issue.
 
-[^16]: Email from Adriana Ramirez, Research Attorney Practice Area Consultant, to Justin Tung, Reference Librarian and Lecturer at the Univ. Tex., (Feb 4, 2026 7:46 AM CST) (on file with author).
+[^16]: Email from Adriana Ramirez, Research Attorney Practice Area Consultant, to [AUTHOR INFO], [AUTHOR INFO] (Feb 4, 2026 7:46 AM CST) (on file with author).
 
 Westlaw was very fast to upload files to, but running a query through the Legal AI can be extremely slow. With large file set sizes, responses often took upwards of 10 minutes.
 
@@ -502,4 +502,5 @@ Aggregating these use cases can also inform purchasing decisions, as the cost of
 This study leaves to further research the differences in kinds of questions such as rote retrieval and linearity. It also leaves to further research the effect of scaling clue density with file set sizes. Much of this research requires a larger sample size per condition in order to draw statistically significant results, which was outside this study's scope.
 
 In the context of the ever-changing legal tech market, some AI tools and their providers claim that their product will bring powerful transformations to the practice of law. This study scrutinizes a subset of those claims, specifically relating to the ability to upload a custom database and query it with a legal AI tool. 
+
 

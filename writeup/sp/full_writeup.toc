@@ -1,0 +1,31 @@
+\contentsline {section}{\numberline {1}Abstract}{1}{section.1}%
+\contentsline {section}{\numberline {2}Key Terms}{1}{section.2}%
+\contentsline {section}{\numberline {3}Submissions and Declarations}{1}{section.3}%
+\contentsline {section}{\numberline {4}Acknowledgments}{1}{section.4}%
+\contentsline {section}{\numberline {5}Background and Literature review}{1}{section.5}%
+\contentsline {section}{\numberline {6}Methodology}{2}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Overview:}{2}{subsection.6.1}%
+\contentsline {subsubsection}{\numberline {6.1.1}Products Tested}{2}{subsubsection.6.1.1}%
+\contentsline {subsubsection}{\numberline {6.1.2}Data Sources and File Sets}{3}{subsubsection.6.1.2}%
+\contentsline {paragraph}{\numberline {6.1.2.1}File Types}{6}{paragraph.6.1.2.1}%
+\contentsline {paragraph}{\numberline {6.1.2.2}File Set Sizes}{6}{paragraph.6.1.2.2}%
+\contentsline {subsection}{\numberline {6.2}Clues}{6}{subsection.6.2}%
+\contentsline {subsubsection}{\numberline {6.2.1}Clue Creation}{7}{subsubsection.6.2.1}%
+\contentsline {subsubsection}{\numberline {6.2.2}Clue Injection}{8}{subsubsection.6.2.2}%
+\contentsline {subsection}{\numberline {6.3}Experimental Trials and Evaluation}{8}{subsection.6.3}%
+\contentsline {subsubsection}{\numberline {6.3.1}Uploading Files}{8}{subsubsection.6.3.1}%
+\contentsline {subsubsection}{\numberline {6.3.2}Trials}{9}{subsubsection.6.3.2}%
+\contentsline {subsection}{\numberline {6.4}Evaluating outputs}{9}{subsection.6.4}%
+\contentsline {section}{\numberline {7}Findings}{9}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Refusals}{9}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Correlation between File Set Size and Legal AI Performance}{10}{subsection.7.2}%
+\contentsline {subsubsection}{\numberline {7.2.1}Lexis and Westlaw}{11}{subsubsection.7.2.1}%
+\contentsline {subsubsection}{\numberline {7.2.2}Harvey}{12}{subsubsection.7.2.2}%
+\contentsline {subsection}{\numberline {7.3}Correlation between Corpora and Legal AI Performance}{13}{subsection.7.3}%
+\contentsline {section}{\numberline {8}Discussion and Other Findings}{15}{section.8}%
+\contentsline {subsection}{\numberline {8.1}Platform Speed}{15}{subsection.8.1}%
+\contentsline {subsection}{\numberline {8.2}Performance Between Problem Types}{15}{subsection.8.2}%
+\contentsline {subsection}{\numberline {8.3}Struggles With Non-linearity}{15}{subsection.8.3}%
+\contentsline {subsection}{\numberline {8.4}Processing Paralleliztion}{16}{subsection.8.4}%
+\contentsline {section}{\numberline {9}Conclusion}{16}{section.9}%
+\contentsline {section}{\numberline {10}Bibliography}{18}{section.10}%
