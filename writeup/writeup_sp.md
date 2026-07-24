@@ -12,7 +12,7 @@ Legal technology vendors offer products with different capabilities. One capabil
 
 # Key Terms
 
-Legal Research, Artificial Intelligence, Emperical Data, Database Retrieval
+Legal Research, Artificial Intelligence, Empirical Data, Database Retrieval
 
 # Submissions and Declarations
 

@@ -1,7 +1,7 @@
 \contentsline {section}{\numberline {1}Abstract}{1}{section.1}%
 \contentsline {section}{\numberline {2}Key Terms}{1}{section.2}%
 \contentsline {section}{\numberline {3}Submissions and Declarations}{1}{section.3}%
-\contentsline {section}{\numberline {4}Acknowledgments}{1}{section.4}%
+\contentsline {section}{\numberline {4}Acknowledgments and Funding}{1}{section.4}%
 \contentsline {section}{\numberline {5}Background and Literature review}{1}{section.5}%
 \contentsline {section}{\numberline {6}Methodology}{2}{section.6}%
 \contentsline {subsection}{\numberline {6.1}Overview:}{2}{subsection.6.1}%

@@ -12,13 +12,13 @@ Legal technology vendors offer products with different capabilities. One capabil
 
 # Key Terms
 
-Legal Research, Artificial Intelligence, Emperical Data, Database Retrieval
+Legal Research, Artificial Intelligence, Empirical Data, Database Retrieval
 
 # Submissions and Declarations
 
 The author has no financial or non-financial interest in the products evaluated, or the outcome of the evaluation.
 
-# Acknowledgments
+# Acknowledgments and Funding
 
 This research did not receive any funding.
 
