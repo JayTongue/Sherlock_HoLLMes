@@ -4,109 +4,85 @@ author: "Justin Tung[^18]"
 date: "2026"
 ---
 
-[^18]: Transactional Practice Innovation Lead at Jackson Walker LLP. The author holds a J.D. from the University of Texas School of law, MSLIS from the University of Illinois, and a BA from Boston College. 
+[^18]: Transactional Practice Innovation Lead at Jackson Walker LLP. The author holds a J.D. from the University of Texas School of Law, MSLIS from the University of Illinois, and a BA from Boston College.
 
 # Abstract
 
-Legal technology vendors offer products with different capabilities. One capability often offered is the ability to upload documents as a custom database and query it with an AI chat functionality. This study presents an experiment, data, and analysis of the performance of these legal AI tools from Westlaw, Lexis, and Harvey with different kinds and sizes of uploaded text. I create a specified set of files and seed "clues" that correspond to questions I ask the legal AI tool covering a range of retrieval and logic tasks. The legal AI's response is evaluated on the basis of its ability to retrieve the seeded information. This analysis and data describes the relationship between legal AI performance and both file set sizes and corpora types, specifically retrieval capability and accuracy. I conclude that there are correlations between file set size and performance, and for all tested products, a correlation between corpora and performance. This research aims to provide data and analysis that users of legal AI tools can use to better understand these tools and make informed decisions about use by critically assessing the legal AI tools along the variables used in this research.
+Legal technology vendors increasingly offer products that let users upload documents as a custom database and query them via AI chat. This study evaluates the performance of legal AI tools from Westlaw, Lexis, and Harvey with different kinds and sizes of uploaded text. I create a standardized set of files, seed "clues" in them, and ask corresponding questions covering a range of retrieval and logic tasks, grading each tool's ability to retrieve the seeded information. I find correlations between file set size and performance for all tested products, and between corpus type and performance for all tested products. This research aims to give users of legal AI tools data to critically assess these tools and make informed decisions.
 
 # Key Terms
 
-Legal Research, Artificial Intelligence, Emperical Data, Database Retrieval
+Legal Research, Artificial Intelligence, Empirical Data, Database Retrieval
 
 # Submissions and Declarations
 
 The author has no financial or non-financial interest in the products evaluated, or the outcome of the evaluation.
 
-# Background and Literature review
+# Background and Literature Review
 
-Electronic document management platforms have long been part of law practice and are an area that generative AI has and continues to disrupt. A critical element of this disruption is the ability to use legal AI tools not just to analyze documents, but to identify relevant documents out of many. This creates a new market for legal AI tools such as Harvey and Legora, which are not part of large pre-existing legal databases of authorities. Traditional legal tech platforms have also expanded to offer legal AI tools with this functionality as well.
+Electronic document management has long been part of law practice, and generative AI continues to disrupt it — not just by analyzing documents, but by identifying relevant ones among many. This has created a market for legal AI tools like Harvey and Legora, which sit outside the large pre-existing legal databases, while traditional legal publishers have added similar functionality to their own platforms.
 
-Despite this, there is very little independent evaluation or comparison of available legal AI tools for this specific purpose. Some of this is due to lack of access to multiple tools with similar functionality. Contracts with platforms also may prohibit public disclosure of analysis or technical findings. Another factor may be the labor required to gather data at a scale that researchers can statistically analyze. Consequently, while a lot of great research has been and is continually done on the research or generative abilities of legal AI tools, there is currently very little analysis or scrutiny of the ability of these tools to interact with user-uploaded files.
+Despite this, there is very little independent evaluation of legal AI tools for this specific purpose, likely due to limited access to multiple comparable tools, contractual restrictions on disclosing findings, and the labor required to gather statistically useful data. As a result, while there is substantial research on the research and generative capabilities of legal AI tools, there is very little scrutiny of their ability to interact with user-uploaded files.
 
-The one study that I could identify addressing a similar question is the Vals Legal AI Report from February 27, 2025 by Vals AI.[^29] This study covers many different legal AI tools and types of tasks that legal AI tools may be asked to do. Of the many tasks, Data Extraction and Document Q&A tests are the most similar to the focus of my study. However, this study addresses a fundamentally different research question, specifying no more than a single-digit number of files as a source for a legal AI's response. This study also confined user-uploaded files to sets of no more than 29 in any trial and only uploading documents pertaining to that specific trial. In this study's "Notes on study limitation" section, the researchers specifically acknowledge that they were limited by the nature of the type of documents and question/answer pairs in their experimental design. While the Vals study is useful in addressing the use case of users uploading small and specific sets of files, it does not examine a use case with more files of varying relevance. Given the fact that some of these legal AI tools allow a much larger capacity than what the Vals AI study tests, it leaves many potential use cases unassessed.
+The one comparable study I identified is the Vals Legal AI Report from February 27, 2025.[^29] Its Data Extraction and Document Q&A tests are the most similar to this study's focus, but it addresses a different question: it limits sources to single-digit numbers of files and caps file sets at 29, uploading only documents relevant to a given trial. The study's own limitations section acknowledges these constraints. While useful for the small, curated upload use case, it leaves unassessed the larger-scale, mixed-relevance use case that many of these tools are designed to support.
 
 [^29]: Vals AI, *Vals Legal AI Report* (Feb. 2025), https://www.vals.ai/industry-reports/vlair-2-27-25 [https://perma.cc/58WN-ZS33]
 
-It is into this research gap that this research steps. 
+It is into this research gap that this research steps.
 
 # Methodology
 
 All code is available at this Git Repository: https://github.com/JayTongue/Sherlock_HoLLMes
 
-Generative Artificial Intelligence was not used in any step of the experimental design, trials, evaluations, or writing of this experimentation or report. 
+Generative Artificial Intelligence was not used in any step of the experimental design, trials, evaluations, or writing of this experimentation or report.
 
-## Overview:
-This paper evaluates the capability of different legal AI products by grading their ability to answer questions based on a standardized set of problems seeded throughout files containing different kinds of text (corpora). I chose products which offered the ability to upload and query a custom set of files with a legal AI tool. The evaluated tools for this study were Westlaw CoCounsel, Lexis Protégé, and Harvey.
+## Overview
 
-I tested five different kinds of corpora: two based on real-world data sets and three synthesized corpora. The real-world data sets were download from open-source online repositories. Synthetized data sets were algorithmically generated with a variety of computational means. 
+This paper evaluates legal AI products by grading their ability to answer questions based on standardized problems seeded throughout files of different corpora. I evaluated Westlaw CoCounsel, Lexis Protégé, and Harvey — the products offering custom file upload and query.
 
-The Clues that formed the questions followed standardized templates, swapping the names of individuals, topics, and other fields so that they do not overlap and entangle, and questions always have some element of spontaneous iteration and variability. After creating files and clues, I injected the clues into random places in randomly selected files in a given set. 
-
-I then uploaded the injected file set to a legal AI tool and asked it the corresponding questions. I then evaluated the legal AI's answers and recorded the results.
+I tested five corpora: two real-world (downloaded from open-source repositories) and three synthetic (algorithmically generated). Questions followed standardized templates with swapped names, topics, and other fields to prevent cross-contamination, with some built-in variability. After creating files and clues, I injected the clues into random locations in randomly selected files, uploaded the file set to each legal AI tool, asked the corresponding questions, and recorded the results.
 
 ### Products Tested
 
-The products evaluated in this study were confined to those available to the author in late 2025 and early 2026. These tools were Westlaw CoCounsel 2.0, Lexis Protégé, and Harvey. 
+The products evaluated were confined to those available in late 2025 and early 2026: Westlaw CoCounsel 2.0, Lexis Protégé, and Harvey.
 
-Westlaw CoCounsel 2.0 is a legal AI tool released by Westlaw, a legal publisher and research platform owned by Thomson Reuters. Westlaw released their CoCounsel AI in August of 2025.[^1]
+Westlaw CoCounsel 2.0 is Westlaw's (a Thomson Reuters property) legal AI tool, released in August 2025.[^1] Lexis released its AI product, Protégé, in January 2025 for U.S. general availability;[^3] the evaluated version is branded "Lexis+ with Protégé" with no version number. Harvey, a legal tech startup founded in 2022, offers custom databases, user-defined workflows, and document drafting; the evaluated version had no version number.
 
 [^1]: Thomson Reuters, _Thomson Reuters Launches CoCounsel Legal: Transforming Legal Work with Agentic AI and Deep Research_, [Thomson Reuters]{.smallcaps} (August 5, 2025) https://www.thomsonreuters.com/en/press-releases/2025/august/thomson-reuters-launches-cocounsel-legal-transforming-legal-work-with-agentic-ai-and-deep-research [https://perma.cc/A5S5-PZ26] (last visited Feb. 17, 2026).
 
-Lexis, another legal publisher and research database, released its legal AI product, Protégé, in January 2025 for general availability in the United States.[^3] The evaluated version is branded simply as "Lexis+ with Protégé" and carries no version number.
+[^3]: LexisNexis, _LexisNexis Introduces Protégé Personalized AI Assistant with Agentic AI, Making it Easier to Power Complex Legal Task Completion_, [LexisNexis]{.smallcaps} (January 27, 2025) https://www.lexisnexis.com/community/pressroom/b/news/posts/lexisnexis-introduces-protege-personalized-ai-assistant-with-agentic-ai-making-it-easier-to-power-complex-legal-task-completion [https://perma.cc/77K3-QDPH] (last visited Feb. 17, 2026).
 
-[^3]: LexisNexis, _LexisNexis Introduces Protégé Personalized AI Assistant with Agentic AI, Making it Easier to Power Complex Legal Task Completion_, [LexisNexis]{.smallcaps} (January 27, 2025) https://www.lexisnexis.com/community/pressroom/b/news/posts/lexisnexis-introduces-protege-personalized-ai-assistant-with-agentic-ai-making-it-easier-to-power-complex-legal-task-completion [https://perma.cc/77K3-QDPH] (last visted Feb. 17, 2026).
-
-Harvey, founded in 2022 as a legal tech startup, offers legal AI products including the ability to create custom databases, build user-defined workflows, and generate drafts of legal documents. The evaluated version had no version number.
-
-Lexis and Harvey refer to their user-upload product as a "vault", whereas Westlaw simply refers to them as "databases".
+Lexis and Harvey call their upload product a "vault"; Westlaw calls it a "database."
 
 ### Data Sources and File Sets
 
-A file set refers to the files used for a single upload and a single set of questions. Every file set is comprised of content from one of five corpora types with a specified number of files in the set. 
+A file set is the files used for one upload and one set of questions, drawn from one of five corpus types.
 
 #### Corpus Types
-This study used five different types of corpora, meant to span a range of possible files in a legal setting. Files from the Contracts and Enron datasets were high in semantic content, whereas the synthetic corpora (Markov, Random, and Zeros) were low in semantic content. This paper uses "semantic content" to refer to content which conveys cognizable information. For instance, a clause of a contract conveys information about the agreement between the parties, whereas a string of random characters conveys no information. Besides the Contracts and Enron corpora which are semantically meaningful, the Markov copora mimics the text of legal opinions while the Random corpora mimics data which may be encrypted or corrupted, and the Zeros corpora mimics data which may be blank, overwritten, or redacted. 
 
-##### Commercial Contracts
+Contracts and Enron were high in semantic content (conveying cognizable information); the synthetic corpora — Markov, Random, and Zeros — were low in semantic content. Markov mimics legal-opinion text, Random mimics encrypted or corrupted data, and Zeros mimics blank, overwritten, or redacted data.
 
-File sets of the "Contracts" filetype were filled with files randomly selected from the Material Contracts Corpus compiled in 2025 by Stanford Law School. This dataset is mostly comprised of contracts publicly available in the SEC EDGAR database. It contains the text of 1,038,766 contracts as well as metadata, totalling 156.2 GB. I downloaded this dataset from the Material Contracts Corpus website[^5], indexed it, and randomly sampled it for the text of file sets of this corpus type.
+**Commercial Contracts.** Files were drawn from the Material Contracts Corpus compiled in 2025 by Stanford Law School, comprising 1,038,766 SEC EDGAR contracts (156.2 GB with metadata).[^5] I downloaded, indexed, and randomly sampled this dataset.
 
 [^5]: Peter Adelson and Julian Nyarko, _Material Contracts Corpus_, [Stanford Law School]{.smallcaps} https://mcc.law.stanford.edu/ [https://perma.cc/XC7Z-AJ7G] (last visited Feb. 17, 2026).
 
-##### Enron Discovery
-
-File sets of the "Enron" filetype were filled with files randomly selected from the Enron Email Dataset V2. This was obtained via the Internet Archive[^6]. These files were downloaded, extracted, and indexed. Fully extracted, this dataset takes 258.9 GB.
+**Enron Discovery.** Files were drawn from the Enron Email Dataset V2, obtained via the Internet Archive[^6] (258.9 GB fully extracted). A portion of this data is machine-generated (headers, signatures) rather than message content.
 
 [^6]: Enron Corporation, _Files for edrm.enron.email.data.set.v2.xml_, [Internet Archive]{.smallcaps} https://archive.org/download/edrm.enron.email.data.set.v2.xml [https://perma.cc/HYM9-72YQ] (last visited Feb. 17, 2026).
 
-A portion of this data is machine-generated text, such as email headings, signatures, and other computationally added information besides the message of the actual emails. Files for an Enron type file set contain the text of files randomly selected from this dataset.
-
-##### Markov Text
-
-File sets of the "Markov" filetype contained text generated from Markov Chains trained on the United States Reports. I downloaded the United States Reports (1754-2014) from the Caselaw Access Project[^8]. I created 3rd-order markov chains with rollback based on these case options.
+**Markov Text.** I generated 3rd-order Markov chains with rollback from the United States Reports (1754–2014), downloaded from the Caselaw Access Project,[^8] and used them to generate text to a target file size.
 
 [^8]: United States Government Publishing Office, _United States Reports (1754-2014)_, [Caselaw Access Project]{.smallcaps} https://case.law/caselaw/?reporter=us [https://perma.cc/5PV9-6WMT] (last visited Feb. 17, 2026).
 
-Files of the Markov corporus used these chains to generate text until the text met the target file size.
-
-##### Random Characters
-
-File sets of the "Random" filetype contained the text of characters from generated from the /dev/urandom and /dev/random files in a linux filesystem. These two files allow users to access the computer's random number generator, returning a random stream of bytes based on the computer's entropy pool.[^10]
+**Random Characters.** Files were filled with bytes from /dev/urandom and /dev/random,[^10] regularized as hexadecimal strings to avoid encoding issues, to a target file size.
 
 [^10]: Linux Foundation, _urandom(4) - Linux man page_, [Linux Manual]{.smallcaps} https://linux.die.net/man/4/urandom [https://perma.cc/5CS5-V7KB] (last visited Feb. 17, 2026).
 
-To curtail encoding issues, I regularized the data as hexadecimal strings. I filled files in Random file sets with these regularized random bytes until the text met the target file size.
-
-##### Zeros
-
-Files in the Zeros file sets contained literally repeated numerical zeros ("0"). Similarly to streamed random bytes in the Random corpus, a function streamed zeros into files until they contained the target file size.
+**Zeros.** Files contained streamed, repeated "0" characters to a target file size.
 
 #### Distribution Analysis
 
-In order to mimic a realistic file size distribution for the synthetic corpora types (Markov, Random, and Zeros), I analyzed the file size distribution of the two publicly available datasets (Contracts and Enron) so that the generated files could follow roughly the same distribution. Since I was regularizing sizes of individual files along a set distribution, I decided to use number of files in a set as a proxy metric for overall size of information. Since both the Contracts and Enron datasets could be fit to a lognormal distribution, I followed an average of their distributions when creating synthetic corpora. A less limited study could explore the effect of different types of distributions. 
-
-After analyzing the file sizes of both the Enron and Contracts datasets, I fit this file size data to a lognormal distribution.
+To mimic a realistic distribution for the synthetic corpora, I analyzed file-size distributions of the Contracts and Enron datasets, using number of files as a proxy for information size. Both fit a lognormal distribution reasonably well, so I averaged their parameters to generate targets for the synthetic corpora.
 
 | Metric | Contracts Dataset | Enron Dataset |
 |--------|-----------|-----------|
@@ -116,16 +92,11 @@ After analyzing the file sizes of both the Enron and Contracts datasets, I fit t
 | **95% Range** | 2 KB, 900 KB | 10 bytes, 10 MB |
 | **Notes** | Well-behaved distribution | Heavy right tail with extreme outliers |
 
-Despite the lognormal distribution not fitting well to the Enron dataset, the lognormal distribution was the one that fit the model the best without breaking the distribution down into different functions or over-fitting with a high-order polynomial. After fitting, I averaged the Mu and Sigma parameters from both datasets to create parameter targets for the synthetic data sets. These averaged parameters yielded file size targets sitting in between the Contracts and Enron datasets.  
-
-* $\mu = 9.96915$, 
-* $\sigma = 1.63005$
-
-I used these parameters to generate target file sizes to be filled with Markov text, random characters, or zeros.
+The averaged parameters ($\mu = 9.96915$, $\sigma = 1.63005$) were used to generate target file sizes for the Markov, Random, and Zeros corpora.
 
 #### File Types
 
-Each commercial vendor permitted different types of files. Harvey was the most permissive,[^11] Westlaw allowed a moderate range of document and image formats,[^12] and Lexis was the most restrictive, accepting only PDF, DOC, DOCX, TXT, and ZIP files.[^13] 
+Harvey was the most permissive,[^11] Westlaw allowed a moderate range,[^12] and Lexis was most restrictive (PDF, DOC, DOCX, TXT, ZIP).[^13] I randomized files as PDF, TXT, or DOCX in roughly equal proportion, since ZIPs would simply decompress to those types, and DOCX has largely superseded DOC. I converted text to PDF with `reportlab`[^19] and to DOCX with `python-docx`.[^20]
 
 [^11]: Harvey, _Vault: Analyze Large Document Sets at Scale_, [Harvey Support]{.smallcaps} (Feb 4, 2026) https://help.harvey.ai/articles/vault [https://perma.cc/75JL-7B7E] (last visited Feb. 17, 2026).
 
@@ -133,85 +104,47 @@ Each commercial vendor permitted different types of files. Harvey was the most p
 
 [^13]: Lexis+, _Upload Documents_, [LexisNexis]{.smallcaps} https://help.lexisnexis.com/Flare/lexisplusai/US/en_US/Content/FAQ/upload.htm?Highlight=pdf [https://perma.cc/4MSP-CYEG] (last visited Feb. 17, 2026)
 
-I chose to randomize files as either PDF, TXT, or DOCX in approximately equal proportion since the permitted ZIPs would just be decompressed into those file types before actual processing. Additionally, DOCX has largely superseded DOC as a file type.
-
-I converted the target text to PDF with the `reportlab` Python library[^19], and converted to DOCX with the `python-docx` library[^20].
-
 [^19]: [ReportLab Docs]{.smallcaps}, *Andy Robinson* et al., https://docs.reportlab.com/ (last accessed March 6, 2026).
 
 [^20]: [python-docx 1.2.0 documentation]{.smallcaps}, *Steve Canny*, https://python-docx.readthedocs.io/en/latest/ https://perma.cc/RG7D-UT4K (last accessed March 6, 2026).
 
-
 #### File Set Sizes
 
-This research used file sets generated with 10, 25, 50, 100, 250, and 500 files. Although there were initially ambitions to test the full 100gb of vault space that Harvey offers, Lexis caps the number of files in a vault at 500. In order to make the comparison between vendors comparable, the number of documents I used in this study was capped at 500 for all legal AI programs. I chose six file set sizes spanning this range. I chose these specific sizes because within these bounds, they were round numbers which roughly followed a logarithmic progression that covered the tested range.
-
-I created a new set of files for every corpus, at every file set size, and every trial. This individual file set would be uploaded to all three legal AI platforms. After creating a vault/database, they were queried once and never altered.
+I used file sets of 10, 25, 50, 100, 250, and 500 files. Lexis caps vaults at 500 files, so I capped all vendors at 500 for comparability; these six sizes were chosen as round numbers roughly following a logarithmic progression across the tested range. A new set of files was created for every corpus, size, and trial, and each was uploaded to all three platforms, queried once, and never altered.
 
 ## Clues
 
-In order to ensure regularity and fairness of the questions given to the legal AIs, I developed a standard set of clues and questions to spread across all corpora and ask all platforms. These were then compared to a corresponding set of answers. A clue was a set of clues were statements injected into files in the file set. Questions are the queries I asked the legal AI based on the file set containing the clues. Answers are the legal AI's response.
-
-This study evaluates the ability of legal AI tools to find these specified clues rather than inquiring about the actual underlying corpora documents. All clue templates and fillers are available at the linked repository.
+I developed a standard set of clues and questions used across all corpora and platforms, later compared to corresponding answers. A set of clues were statements injected into files; questions were the queries asked of the legal AI; answers were its responses. This study evaluates the tools' ability to find these seeded clues, not to reason about the underlying corpus documents themselves.
 
 ### Clue Creation
 
-I created clues by first creating templates for retrieval or logical problems. Then for each file set, I randomly chose retrieval and logical problems from the templates, and populated in random names of people, reports, facts, topics, and randomly selected dates. These became the "clues" that I injected into the file set.
-
-I chose three types of problems: simple retrieval, formal logic, and informal logic. These roughly simulate use cases which may arise from use of these tools in a legal context. A restriction to six problems per file set is a limitation of this study. I chose this limit because although six sets of problems is very sparse for a file set of size 500, more than half the files could have gotten a clue with a file set size of 10. I decided not to scale the number of sets of clues as file set sizes scaled so that the data could reflect the legal AI's ability to find information which was increasingly diluted. 
-
-The full templates, as well as the populated names are available at the Github Repository.
+I created templates for three types of problems — simple retrieval, formal logic, and informal logic — roughly simulating legal use cases, then populated each with random names, topics, reports, facts, and dates. I limited each file set to six problems: enough clues to scale meaningfully at a file set size of 500 without saturating a file set of 10. All templates and populated names are in the linked repository.
 
 ### Clue Injection
 
-After completing template population, I injected the clues at random locations in random files in the file set. These often ended up in the middle of a paragraph or sentence, but could have been anywhere. Each clue was preceded and followed by two new line characters. If there were multiple statements in a set of clues, these were not kept together, and would likely end up across different files. For instance, the formal and informal logic examples given above are both two statements. Scattering and randomizing statements poses an additional challenge for both human and machine readers of documents, but it is exactly that challenge that this research poses and studies.
-
-Clue sets were consistent for each trial of a given file set size and a given corpus for all legal AI tools, but all different trials had different clues. For instance, the files and problems generated for trial 7 of the Contracts corpus in file set size 250 was uploaded to all three vendors, which were also asked the same questions.
+Clues were injected at random locations in random files, often mid-paragraph or mid-sentence, each set off by blank lines. Multi-statement clues were split across different files rather than kept together, adding a retrieval challenge that is central to this study's design. Clue sets were held constant across vendors for a given trial, size, and corpus, but varied across trials.
 
 ## Experimental Trials and Evaluation
 
 ### Uploading Files
 
-For each platform, I created a vault or database through the web UI, uploaded the files by drag-and-drop, and waited until all upload and processing indicators showed completion before querying. For Lexis and Westlaw, I appended the following instruction to the questions: "Answer all questions but DO NOT do a document by document analysis for ANY part of the response. DO NOT make a timeline." No additional instructions were added for Harvey.
+For each platform, I created a vault or database via the web UI, uploaded files by drag-and-drop, and waited for processing to complete before querying. For Lexis and Westlaw, I appended: "Answer all questions but DO NOT do a document by document analysis for ANY part of the response. DO NOT make a timeline." No additional instructions were added for Harvey.
 
 ### Trials
 
-I attempted ten trials for each of the three Legal AI tools at each of the six sizes of file sets, for each of the five types of corpora. In total, I created 900 total vaults/databases, asked and graded 5,400 questions, and uploaded a total of 140,250 files amounting to 29.43 GB of information.
+I ran ten trials for each of three tools, at each of six file set sizes, across five corpora: 900 total vaults/databases, 5,400 questions, and 140,250 files (29.43 GB). The goal was a realistic single-pass workflow rather than an optimized one; better custom prompting might improve results but represents a different use case than modeled here.
 
-Note that the objective of these trials was not to produce an ideal response, but a realistic one. Although each set of questions for each file set could have been retried repeatedly to get a better result, my priority was to mimic a workflow of someone simply using the tool. Better custom prompts/information may also have yielded better performance for any given legal AI product, but developing custom instructions or iteratively improving prompts represent a different use case than the one modeled in this study.
+## Evaluating Outputs
 
-## Evaluating outputs
+Each file set had six seeded clues and six questions, so retrieval was graded out of six, with all grading done by the author. Informal and formal logic answers were recorded as correct if the AI found and connected all relevant clues, even if its ultimate conclusion was wrong. For example, given the hypothetical-syllogism clues "If {x} has the email about {topic}, they would have shared it with {y}" and "If {y} has email about {topic}, they would have shared it with {z}," asked whether {z} would have the email, a response like "No — there is a hypothetical chain of custody but no direct evidence {z} has it" was scored a success, since it shows the clues were retrieved and linked, which is the useful signal for a legal researcher regardless of the ultimate conclusion.
 
-Since I injected six clues into each file set and asked six questions to each legal AI, retrieval capabilities were graded out of a full score of six. All questions were graded by the author.
-
-Especially with informal logic questions, responses were still recorded as correct if the AI found all the clues and related them to each other with a logical framework even if the overall conclusion was contrary to the prescribed answer. For instance, a formal logic (hypothetical syllogism) template was:
-
-    "If {x} has the email about {topic}, they would have shared it with {y}.",
-    "If {y} has email about {topic}, they would have shared it with {z}."
-
-The question would then ask:
-
-    "If {x} has the email about {topic}, would {z} have email about {topic}?",
-
-An answer I recorded as a success would be: 
-
-    "No, because although there is a hypothetical chain of custody from {x} to {z}, 
-        there is no direct evidence showing that {z} has the email about {topic}"
-
-In instances like this, since the legal AI retrieved the relevant statements, I recorded a success even though the conclusion is opposite to the formally logical one. This flexible standard was intentional: the focus is the retrieval properties of the legal AI, not its ability to judge whether evidence meets a standard of conclusiveness. Such an answer would still be useful to a legal researcher because it shows the clues were found, and the responses often linked to locations in the underlying documents.
-
-The raw data of recorded scores is available in the linked Github repository.
+Raw scores are available in the linked repository.
 
 # Findings
 
 ## Refusals
-In some instances, the trial would not result in recordable data. If less than 50% of trials at a given file set size for a given corpus for an legal AI product yielded recordable data, I report no data for that corpus at that file set size for that legal AI product. This threshold was chosen to balance usable data and maintain integrity among trials.
 
-With even a 10-file file set, Lexis often produced a fatal number of errors when uploading files of Random and Zero file sets. This may have been due to a content filter or pre-processing function built into the upload tool. At 500-file file sets, Lexis would also return errors instead of responses to the given query for Markov file sets. Accordingly, no recorded data exists for Lexis for Random or Zeros, and results for Markov at file set size 500 was not recorded.
-
-Although Westlaw CoCounsel allowed the upload of files for all corpora and at all file set sizes, the CoCounsel legal AI itself, instead of the document upload function, often returned a query-time error with the Random corpus at larger sizes of file sets. Accordingly, no data is recorded for the Random file set sizes 100, 250, and 500 for Westlaw.
-
-I ended up recording the following data points for each legal AI:
+If fewer than 50% of trials at a given size/corpus/tool yielded recordable data, I reported no data for that condition. Lexis produced fatal upload errors for Random and Zeros file sets at all sizes, and query-time errors for Markov at 500 files; no data is recorded for Lexis on Random or Zeros, and none for Markov at 500. Westlaw returned query-time errors with the Random corpus at larger sizes, so no data is recorded for Random at 100, 250, or 500 files for Westlaw.
 
 |Legal AI|Responses|
 |-|-|
@@ -221,18 +154,9 @@ I ended up recording the following data points for each legal AI:
 
 ## Correlation between File Set Size and Legal AI Performance
 
-There is some correlation between file set size and performance for some legal AI tools. After preliminary data exploration, the Exponential Decay function seemed to best describe the data. 
-
-The Exponential Decay function is defined as: 
-
-$$y = ae^{-bx} + c$$ 
-
-Because I have multiple data points across different trials for any given file set size, I fit the Exponential Decay function to weighted mean responses at any given x value in order to show the underlying trend. This function fit is simply a descriptive model, not an inferential claim, and therefore does not use hypothesis testing.
-
-In order to fit models to this data, I found a weighted averaged of every file set size across all corpora. This was the $y$ value, and the file set size was the $x$. I then fit these points with the `curve_fit` function in the `scipy.optimize` library.[^15]
+Preliminary exploration suggested an Exponential Decay function, $y = ae^{-bx} + c$, best describes the data. I fit this descriptive (non-inferential) model to weighted mean responses at each file set size, averaged across corpora, using `scipy.optimize.curve_fit`.[^15]
 
 [^15]: Scipy, _scipy.optimize.curve_fit_, [Scipy]{.smallcaps} (2008) https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.curve_fit.html [https://perma.cc/RE8X-EKGA] (last visited Feb. 17, 2026)
-
 
 | Vendor  |       R² |     MAE |       a |         b |       c |   se(a) |     se(b) |   se(c) |
 | ------- | -------: | ------: | ------: | --------: | ------: | ------: | --------: | ------: |
@@ -240,7 +164,7 @@ In order to fit models to this data, I found a weighted averaged of every file s
 | Lexis   |  0.50643 | 0.79910 |  3.2071 |  0.013462 | 0.97018 | 0.85813 | 0.0093893 | 0.53882 |
 | Westlaw |  0.44218 | 0.58271 |  2.8971 | 0.0024473 |  2.4232 |  2.4689 | 0.0038972 |  2.6234 |
 
-Note that these values are calculated on the raw data, not percentized scores, which is what is represented on the following visualizations.
+Values are calculated on raw data, not the percentized scores used in the following visualizations.
 
 ### Lexis and Westlaw
 
@@ -248,33 +172,17 @@ Note that these values are calculated on the raw data, not percentized scores, w
 
 ![Westlaw means by corp](../data_visualizations/vendor_means/Westlaw_mean_by_corp.png){ width=600px }
 
-As a goodness-of-fit measure, the $R^2$ of Lexis (0.506) and Westlaw (0.442) shows that the exponential decay function meaningfully describes a trend in the data, explaining ~51% and ~44% of the variance respectively. The function is fit to data averaged across all corpora at each file set size; modeling each corpus individually would likely yield a higher $R^2$ but would require far more data than this study collected. Mean Absolute Error (MAE) indicates that Westlaw's mean responses varied less than Lexis's. Note that due to its errors and refusals, the Lexis curve was fit on less data than the other tools.
+Lexis ($R^2=0.506$) and Westlaw ($R^2=0.442$) show the exponential decay function meaningfully describes the data, explaining ~51% and ~44% of variance respectively. Fitting each corpus individually would likely yield a higher $R^2$ but would require more data than collected here. Westlaw's lower MAE indicates less variation in its mean responses than Lexis's, though Lexis's curve was fit on less data due to errors and refusals.
 
 ### Harvey
 
 ![Harvey means by corp](../data_visualizations/vendor_means/Harvey_mean_by_corp.png){ width=600px }
 
-Unlike Lexis and Westlaw which fit to a exponential decay function with statistically representative R-Values, data exploration found that no function properly fit the data from Harvey. The line shown in the graph shows the best-fitting exponential decay curve, but it fits the data very poorly ($R^2 = 0.051$), and looks very linear. This line is visually included to show what may be an averaged overall trend, not to indicate fit. There is no real relationship between the fit set size and performance that fit a regression model. 
-
-In lieu of an appropriately representative model, this study instead can only describe Harvey's performance across all file set sizes as centering around 83.3% ± 10% when all corpora are averaged (range: 73.3% - 91.7%). 
+No function properly fit Harvey's data; the plotted exponential decay curve fits poorly ($R^2 = 0.051$) and is included only to visualize an overall trend, not to indicate goodness of fit. There is no real relationship between file set size and Harvey's performance. Instead, Harvey's performance across all sizes centers around 83.3% ± 10% averaged across corpora (range: 73.3%–91.7%).
 
 ## Correlation between Corpora and Legal AI Performance
 
-There is correlation between the corpora and the Legal AI performance. 
-
-I performed Analysis of Variance (ANOVA) on all data points for each corpora to determine whether performance of different corpora are statistically distinct, i.e. whether the variance between groups was greater than variation within groups. The Null Hypothesis was that performance for every corpus was the same:
-
-$H0: contracts = enron = markov = random = zeros$
-
-with the alternative hypothesis stated as:
-
-$Halt$: it is not the case that $contracts = enron = markov = random = zeros$
-
-ANOVA yielded a P-value of 3.2642672702541746e-46, far smaller than any conventional significance level. This means there is extremely strong evidence that at one or several groups differ from other groups.
-
-I followed this with a variation of Tukey's Honestly Significantly Different test called Tukey-Kramer. This variation is used when different data labels had different numbers of data points. This test determines which pairs of groups were statistically distinct from each other.
-
-Tukey-Kramer yielded the following analysis for each pair of corpora compared against a 5% significance value:
+I ran ANOVA across all corpora ($H_0$: contracts = enron = markov = random = zeros), yielding $p = 3.264 \times 10^{-46}$ — strong evidence that at least one group differs. I followed with Tukey-Kramer (which accommodates unequal group sizes) to identify which pairs differ, at 5% significance:
 
 | Group 1   | Group 2 |      dij |     HSD | Reject? |
 | --------- | ------- | -------: | ------: | :-----: |
@@ -289,23 +197,15 @@ Tukey-Kramer yielded the following analysis for each pair of corpora compared ag
 | markov    | zeros   |   1.3195 | 0.44462 |   True  |
 | random    | zeros   | 0.038250 | 0.52015 |  False  |
 
-For each pair of groups, the Null Hypothesis is:
-
-$H_{0}$ = $group 1 = group 2$, 
-
-and the alternative hypothesis is 
-
-$H_{alt}$ = It is not the case that $group1 = group2$. 
-
-The "Reject" column describes whether on the basis of the Tukey-Kramer methodology, the Null hypothesis is rejected and the alternative hypothesis is adopted. Here, the alternative hypothesis is adopted for all pairs except Enron with Markov, and Random with Zeros. This means that according to Tukey-Kramer, the variation within each group in a pair does not exceed the variation between the groups in the pair. For all other groups, the distinction is statistically significant. 
+The null hypothesis is rejected for every pair except Enron/Markov and Random/Zeros, indicating a statistically significant difference for all other pairs.
 
 ![Corpora performance](../data_visualizations/corpora_compared/corpus_comparison.png){ width=600px }
 
-After determining that there is statistical difference overall as well as most pairs of groups, I compare these differences. The best recorded performances came from Zeros and Random. Although note that this data may be skewed because data is missing from Lexis for these corpora. After Zeros and Random, the next corpora, in order of performance, is Enron, then Markov, followed by Contracts.
+Zeros and Random performed best (though Lexis data is missing here, which may skew results), followed by Enron, then Markov, then Contracts.
 
-The least performant corpus was Contracts. This result is surprising because analysis of large volumes of contracts is sometimes an explicitly advertised use of these legal AI tools. The poor performance may be due to the density of information in the original underlying corpus. Perhaps because of the high volume and density of legally significant semantic content in the underlying data, all legal AI tools seemed to suffer significantly in terms of performance. At nearly every file size, nearly all vendors performed the worst with the Contracts corpora.
+Contracts performed worst — a surprising result given that contract analysis is a commonly advertised use case for these tools — likely due to the density of legally significant semantic content in the corpus. At nearly every size, nearly all vendors performed worst on Contracts.
 
-This may indicate an inherent challenge for retrieval based legal AI tools. Retrieval architectures pair a set of documents with a large language model which can use it as a basis of knowledge that is outside of its context window and outside of the information represented in its training corpus. Retrieval architectures such as Retrieval Augmented Generation is widely used in many legal AI architectures to increase accuracy[^22], sometimes even leading to claims that such such systems enable a legal AI to generate a response that is "hallucation free"[^23]. Such claims have been[^24] and should be critically examined.
+This may reflect an inherent challenge for retrieval-based legal AI: architectures that pair document sets with an LLM (e.g., Retrieval Augmented Generation) are widely used to increase accuracy[^22] and sometimes marketed as enabling "hallucination free" output.[^23] Such claims have been challenged[^24] and warrant continued scrutiny. Interestingly, the corpus performance ordering roughly matches what a human reader might expect: content that's easy to dismiss as meaningless (Zeros, Random) yielded the best results, while more semantically dense content yielded worse performance.
 
 [^22]: see e.g. James Ju, *Retrieval-augmented generation in legal tech*, [Thomson Reuters Blog]{.smallcaps} (December 4, 2024), https://legal.thomsonreuters.com/blog/retrieval-augmented-generation-in-legal-tech/ [https://perma.cc/CM78-KFSB].
 
@@ -313,55 +213,26 @@ This may indicate an inherent challenge for retrieval based legal AI tools. Retr
 
 [^24]: see e.g. Varun Magesh et al., *Hallucination-Free? Assessing the Reliability of Leading AI Legal Research Tools*, [J. Empirical Legal Stud.]{.smallcaps} 1–27 (2025), https://dho.stanford.edu/wp-content/uploads/Legal_RAG_Hallucinations.pdf
 
-The order of legal AI performance by corpora, interestingly, seems to follow roughly the expected performance that a human would have if presented with the same tasks. Clues among corpora that are easy to dismiss as meaningless (Zeros and Random) had the best results, and information containing more cognizable and semantically meaningful information yielded worse performance.
-
 # Discussion and Other Findings
 
-The following observations are derived from extensive interaction with the studied legal AI platforms and provide context for statistically-determined quantitative findings. 
+The following observations come from extensive interaction with the platforms and provide context for the quantitative findings above.
 
-## Performance Between Problem Types
+## Performance Between Problem Types and Non-linearity
 
-One limitation of this study is that problems of different types were not individually recorded. I made this decision in order to manage the scope of the research, prioritizing more data that could hopefully be more representative of a more focused set of variables rather than less data at a higher specificity. This area is ripe for further exploration and analysis, and could have a significant impact on the ability to develop functional guidelines and best practices for use of legal AI tools.    
+Problem types (simple retrieval, formal logic, informal logic) were not individually scored, a limitation adopted to prioritize breadth of data over granularity — a promising area for future research. Informally, Simple Retrieval was easiest across all tools, and Formal Logic was hardest, especially where retrieval was non-linear. For example, given the clues "{x} and {y} do not both know of {topic}" and "{y} knows of {topic}," and the question "Does {x} know of {topic}?", a correct answer requires retrieving information about {y} as well as {x}, even though {y} is never named in the question. Tools frequently answered based on only one of the two names, suggesting they did not reliably expand their retrieval scope to include entities implied but not stated in the question.
 
-However, from informal observation, it seemed that Simple Retrieval tasks were the easiest for all legal AI tools, and Formal Logic was the hardest. 
+## Processing Parallelization
 
-## Struggles With Non-linearity
-
-The difficulty with Formal Logic seemed to especially stem from tasks that required non-linear retrieval. For instance, if was clue template was:
-
-    "{x} and {y} do not both know of {topic}.",
-    "{y} knows of {topic}."
-
-and the corresponding question was:
-
-    "ques": "Does {x} know of {topic}?"
-
-Reaching a conclusive answer requires the legal AI to not only find and analyze information about {x}, the name explicitly given in the answer, but also {y}, who is not named in the answer. Many times, the legal AI would simply respond that either {x} or {y} knows of the topic, showing that it likely did not make that logical step in appropriately modifying its scope to retrieve the information it used to formulate its answer. 
-
-Like differing problem types, further research into this dynamic could instrumentally impact the development of guidelines and best practices for legal AI use.
-
-## Processing Paralleliztion
-
-Through interaction with the platform, I speculate that the consistency of Harvey's performance across different file set sizes is due to parallelization, i.e. the use of parallel processes that simultaneously spawn multiple instances of an LLM to ingest and process files from the set. This is speculation is based on the fact that Harvey's response times seemed roughly constant across different file set sizes, whereas other legal AI response times scaled in proportion to the file set size. Although parallelization an extremely powerful technique, one drawback to this architecture is that it can lead to heavy processing demands and high computing costs.
-
-Harvey's different technique may be a reflection of a different product strategy than Lexis and Westlaw. Without the ability to directly control and query an enormous database of legal materials[^26], Harvey's product may seek competitiveness on the basis prioritizing access to computing resources. Because they also do not have the cost burden of maintain such a database, they may still stay cost-competitive even though they offer a product with different capabilities.
+Harvey's roughly constant performance across file set sizes, alongside its roughly constant response times, suggests it may parallelize processing — spawning multiple simultaneous LLM instances to ingest files — unlike Lexis and Westlaw, whose response times scaled with file set size. Parallelization is powerful but computationally costly. This may reflect a different product strategy: without a large proprietary legal database to leverage,[^26] Harvey may instead compete on access to computing resources, without the cost burden of maintaining such a database.
 
 [^26]: Harvey does provide a way to integrate its platform with Lexis, but this is not part of its base product, which is the product this study evaluated.
 
 # Conclusion
 
-The legal tech market often seems to have an infinite amount of AI products purporting to sell any imaginable kind of functionality. However, the majority of available information about these tools comes from marketing material and first-party sources. Without independent scrutiny and analysis, it is easy to mistake anecdotal success for statistically impactful utility. 
+Legal tech marketing often outpaces independent scrutiny, making it easy to mistake anecdotal success for meaningful utility. This study tested the custom-database retrieval capabilities of Harvey, Westlaw, and Lexis, seeding standardized clues across five corpus types and six file set sizes, run across ten trials per condition — over 140,000 files across 900 vaults in total.
 
-To test the impact of the number of files and the type of content in those files on the performance of different legal AI tools, I created file sets of five corpus types at six file set sizes to test the custom database retrieval capabilities of legal AI tools from Harvey, Westlaw, and Lexis. I injected these file sets with clues and questions pulled from a standardized template which was varied enough to avoid cross-contamination. I then repeated ten total trials per condition, and measured the ability of the legal AI tool to retrieve the relevant clues required to be responsive to the question. In total, I uploaded over 140,000 files across 900 vaults. 
+Westlaw's and Lexis's performance both fit an exponential decay model, declining substantially from 10 to 500 files, while Harvey's performance fit no model and instead held roughly constant around 83.3%. On corpora, ANOVA rejected the null hypothesis of no difference, and Tukey-Kramer showed all pairs except Enron/Markov and Random/Zeros differed significantly — with Contracts, ironically, performing worst despite being a commonly advertised use case.
 
-First, on the influence of file set size, Westlaw's and Lexis's performance both fit an exponential decay model, declining substantially as file sets grew from 10 to 500 files. Harvey's performance fit no model and instead held roughly constant, centering around 83.3% across the range.
+Practically, this suggests Westlaw and Lexis users should consider trimming uploaded file volume where possible, that a performance threshold may exist beyond which these tools become unreliable, and that users of all three tools should be aware that data type affects retrieval accuracy — often in the opposite direction from what marketing claims might suggest.
 
-Second, on the influence of corpora, ANOVA rejected the null hypothesis of no difference between corpora, and the Tukey-Kramer test showed that all pairs except two (Enron + Markov; Random + Zeros) differed significantly. 
-
-These findings support the conclusion that the performance of legal AI tools from Westlaw and Lexis decreases as the volume of user-uploaded files increases. These findings also show that the performance of all tested legal AI tools is influenced by the type of data in the uploaded files, with some types of text yielding more accurate results than others.
-
-The practical implications of this information are manifold. Since performance increases with smaller file set sizes, users of legal AI products may focus on reducing the amount of uploaded information when possible to maximize performance when using Westlaw or Lexis. There may also be a file set size threshold with Westlaw and Lexis beyond which their lack of accuracy means they should not be used. Similarly, users should be wary of the way that different types of uploaded data can lead to better or worse performance. Ironically, data with a high density of legally probative statements tend to perform worse than data that does not.  
-
-This study leaves to further research the differences in kinds of questions such as rote retrieval and linearity. It also leaves to further research the effect of scaling clue density with file set sizes. Much of this research requires a larger sample size per condition in order to draw statistically significant results, which was outside this study's scope.
-
-In the context of the ever-changing legal tech market, some AI tools and their providers claim that their product will bring powerful transformations to the practice of law. This study scrutinizes a subset of those claims, specifically relating to the ability to upload a custom database and query it with a legal AI tool. 
+Further research should examine performance by individual problem type and the effect of scaling clue density with file set size, both of which will require larger sample sizes than were feasible here. This study is offered as a scrutiny of a subset of the sweeping claims made about legal AI's ability to transform legal practice — specifically, its ability to reliably retrieve information from a custom uploaded database.
